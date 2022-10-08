@@ -46,7 +46,7 @@ public class CryptoService {
         List<CryptoPriceResponseDto> prices = new ArrayList<CryptoPriceResponseDto>();
         if(!crypto.isPresent())
             throw new IllegalArgumentException("해당하는 가상화폐가 존재하지 않습니다");
-        if(crypto.get().getCryptoId() == 1){
+        if(crypto.get().getCryptoId() == 2){
             List<bitCoin_Price> all = bitcoinPriceRepository.findAll();
             for(bitCoin_Price bitcoin : all)
                 prices.add(bitcoin.toDTO());
@@ -56,7 +56,6 @@ public class CryptoService {
             for(Etherium_Price etherium : all)
                 prices.add(etherium.toDTO());
         }
-        System.out.println(prices.size());
         return prices;
     }
 

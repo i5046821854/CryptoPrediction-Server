@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @Data
-@Table(name = "price_bitCoin")
+@Table(name = "price_bitcoin")
 public class bitCoin_Price {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) int priceId;
