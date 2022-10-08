@@ -32,7 +32,7 @@ public class CryptoService {
     public List<CryptoResponseDto> getPrices(String name) {
         Optional<CryptoCurrency> crypto = cryptoCurrencyRepository.findByNameEng(name);
         if(!crypto.isPresent())
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("해당하는 가상화폐가 존재하지 않습니다");
         CryptoCurrency cryptoCurrency = crypto.get();
         List<CryptoPrice> prices = cryptoPriceRepository.findByCryptoCurrency(cryptoCurrency);
         List<CryptoResponseDto> dto = new ArrayList<CryptoResponseDto>();
@@ -45,7 +45,7 @@ public class CryptoService {
         Optional<CryptoCurrency> crypto = cryptoCurrencyRepository.findByNameEng(cryptoName);
         List<CryptoPriceResponseDto> prices = new ArrayList<CryptoPriceResponseDto>();
         if(!crypto.isPresent())
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("해당하는 가상화폐가 존재하지 않습니다");
         if(crypto.get().getCryptoId() == 1){
             List<bitCoin_Price> all = bitcoinPriceRepository.findAll();
             for(bitCoin_Price bitcoin : all)
