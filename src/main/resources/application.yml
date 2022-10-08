@@ -1,0 +1,22 @@
+spring:
+  datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://diary.cu6lgsxzmymo.ap-northeast-2.rds.amazonaws.com:3306/crypto
+      username: diary
+      password: rnfma^123
+  jpa:
+    hibernate.ddl-auto: none   #엔티티, 설정 등을 보고 유추해서 자동으로 쿼리(테이블)을 만들어줌
+    show-sql: true
+    #defer-datasource-initialization: true   #resource안에 초기 테스트용 db생성
+    properties:
+      hibernate:
+        format_sql: true
+        default_batch_fetch_size: 100
+  #sql.init.mode: always
+  data.rest: #rest repository를 사용하기 위해
+    base-path: /api
+    detection-strategy: annotated  #리포지토리를 api로 노출하는 전략 (애노테이션 기반)
+  logging:
+    level:
+      org.hibernate.SQL: debug #띄어쓰기 2칸
+      org.hibernate.type: trace #띄어쓰기 2칸  / sql 실행 파라미터의 타입을 말해줌

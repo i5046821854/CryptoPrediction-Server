@@ -1,0 +1,16 @@
+insert into crypto_currency (name_eng, name_kor) values ("ethereum", "이더리움");
+insert into crypto_currency (name_eng, name_kor) values ("bitcoin", "비트코인");
+insert into crypto_price (date_time, price, crypto_id) values ("20220925", 1234, 1);
+insert into crypto_price (date_time, price, crypto_id) values ("20220926", 1235, 1);
+insert into crypto_price (date_time, price, crypto_id) values ("20220927", 1278, 1);
+insert into crypto_price (date_time, price, crypto_id) values ("20220928", 1257, 1);
+insert into crypto_price (date_time, price, crypto_id) values ("20220929", 1260, 1);
+insert into crypto_price (date_time, price, crypto_id) values ("20220930", 1274, 1);
+insert into crypto_price (date_time, price, crypto_id) values ("20221001", 1300, 1);
+insert into crypto_price (date_time, price, crypto_id) values ("20220925", 1134, 2);
+insert into crypto_price (date_time, price, crypto_id) values ("20220926", 1135, 2);
+insert into crypto_price (date_time, price, crypto_id) values ("20220927", 1178, 2);
+insert into crypto_price (date_time, price, crypto_id) values ("20220928", 1157, 2);
+insert into crypto_price (date_time, price, crypto_id) values ("20220929", 1160, 2);
+insert into crypto_price (date_time, price, crypto_id) values ("20220930", 1174, 2);
+insert into crypto_price (date_time, price, crypto_id) values ("20221001", 1200, 2);
