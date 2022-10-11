@@ -25,10 +25,10 @@ public class CryptoController {
         return cryptoService.getPrices(cryptoName);
     }
 
-    @GetMapping("/real/{cryptoName}")
-    public List<CryptoPriceResponseDto> getRealPrices(@PathVariable String cryptoName)
+    @GetMapping("/real/{time}/{cryptoName}")
+    public List<CryptoPriceResponseDto> getRealPrices(@PathVariable int time, @PathVariable String cryptoName)
     {
         System.out.println(cryptoName);
-        return cryptoService.getRealPrices(cryptoName);
+        return cryptoService.getRealPrices(time , cryptoName);
     }
 }

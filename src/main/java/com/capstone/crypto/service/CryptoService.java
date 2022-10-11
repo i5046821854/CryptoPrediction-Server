@@ -41,20 +41,18 @@ public class CryptoService {
         return dto;
     }
 
-    public List<CryptoPriceResponseDto> getRealPrices(String cryptoName) {
+    public List<CryptoPriceResponseDto> getRealPrices(int time , String cryptoName) {
         Optional<CryptoCurrency> crypto = cryptoCurrencyRepository.findByNameEng(cryptoName);
         List<CryptoPriceResponseDto> prices = new ArrayList<CryptoPriceResponseDto>();
         if(!crypto.isPresent())
             throw new IllegalArgumentException("해당하는 가상화폐가 존재하지 않습니다");
         if(crypto.get().getCryptoId() == 2){
-            List<bitCoin_Price> all = bitcoinPriceRepository.findAll();
+            List<bitCoin_Price> all = bitcoinPriceRepository.findByTime1(time);
             for(bitCoin_Price bitcoin : all)
                 prices.add(bitcoin.toDTO());
         }
         else {
-            List<Etherium_Price> all = etheriumPriceRepository.findAll();
-            for(Etherium_Price etherium : all)
-                prices.add(etherium.toDTO());
+            List<Etherium_Price> all = etheriumPriceRepository.findByTime1(time);
         }
         return prices;
     }

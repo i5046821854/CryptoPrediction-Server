@@ -19,7 +19,7 @@ public class bitCoin_Price {
     @Column(nullable = false) float close;
     @Column(nullable = false) float volume;
     @Column(nullable = false)  String time;
-
+    @Column(nullable = false)  Integer time1;
     public bitCoin_Price(int priceId, float open, float high, float low, float close, float volume, String time) {
         this.priceId = priceId;
         this.open = open;

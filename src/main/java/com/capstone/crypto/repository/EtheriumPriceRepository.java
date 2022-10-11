@@ -13,4 +13,6 @@ import java.util.Optional;
 public interface EtheriumPriceRepository extends JpaRepository<Etherium_Price, Long> {
 
     List<Etherium_Price> findAll();
+    List<Etherium_Price> findByTime1(int time);
+
 }

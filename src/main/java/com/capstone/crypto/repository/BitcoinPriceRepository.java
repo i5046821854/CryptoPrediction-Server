@@ -12,4 +12,5 @@ import java.util.Optional;
 public interface BitcoinPriceRepository extends JpaRepository<bitCoin_Price, Long> {
 
     List<bitCoin_Price> findAll();
+    List<bitCoin_Price> findByTime1(int time);
 }
