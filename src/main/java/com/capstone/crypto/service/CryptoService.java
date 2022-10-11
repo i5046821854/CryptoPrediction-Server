@@ -53,6 +53,8 @@ public class CryptoService {
         }
         else {
             List<Etherium_Price> all = etheriumPriceRepository.findByTime1(time);
+            for(Etherium_Price ether : all)
+                prices.add(ether.toDTO());
         }
         return prices;
     }
