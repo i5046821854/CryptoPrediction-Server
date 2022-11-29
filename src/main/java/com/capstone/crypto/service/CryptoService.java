@@ -4,12 +4,10 @@ import com.capstone.crypto.domain.CryptoCurrency;
 import com.capstone.crypto.domain.CryptoPrice;
 import com.capstone.crypto.domain.Etherium_Price;
 import com.capstone.crypto.domain.bitCoin_Price;
+import com.capstone.crypto.dto.ArticlesDto;
 import com.capstone.crypto.dto.CryptoPriceResponseDto;
 import com.capstone.crypto.dto.CryptoResponseDto;
-import com.capstone.crypto.repository.BitcoinPriceRepository;
-import com.capstone.crypto.repository.CryptoCurrencyRepository;
-import com.capstone.crypto.repository.CryptoPriceRepository;
-import com.capstone.crypto.repository.EtheriumPriceRepository;
+import com.capstone.crypto.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +26,7 @@ public class CryptoService {
     private final CryptoPriceRepository cryptoPriceRepository;
     private final BitcoinPriceRepository bitcoinPriceRepository;
     private final EtheriumPriceRepository etheriumPriceRepository;
+    private final ArticleRepository articleRepository;
 
     public List<CryptoResponseDto> getPrices(String name) {
         Optional<CryptoCurrency> crypto = cryptoCurrencyRepository.findByNameEng(name);
@@ -48,8 +47,17 @@ public class CryptoService {
             throw new IllegalArgumentException("해당하는 가상화폐가 존재하지 않습니다");
         if(crypto.get().getCryptoId() == 2){
             List<bitCoin_Price> all = bitcoinPriceRepository.findByTime1(time);
-            for(bitCoin_Price bitcoin : all)
-                prices.add(bitcoin.toDTO());
+            if(time != 1){
+                all.forEach(each->{
+                    String date = each.getTime();
+                    each.setTime(date.substring(0,10));
+                    prices.add(each.toDTO());
+                });
+            }else{
+                all.forEach(each->{
+                    prices.add(each.toDTO());
+                });
+            }
         }
         else {
             List<Etherium_Price> all = etheriumPriceRepository.findByTime1(time);
@@ -57,6 +65,14 @@ public class CryptoService {
                 prices.add(ether.toDTO());
         }
         return prices;
+    }
+
+    public List<ArticlesDto> getArticles(int cryptoType) {
+        return articleRepository.findByType(cryptoType);
+    }
+
+    public List<ArticlesDto> getArticlesWithDate(int type, String date) {
+        return articleRepository.findByTypeAndDateStartsWith(type,date);
     }
 
 //    public List<CryptoResponseDto> getPrices(Long cryptoId) {

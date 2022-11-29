@@ -1,6 +1,7 @@
 package com.capstone.crypto.controller;
 
 import com.capstone.crypto.domain.CryptoCurrency;
+import com.capstone.crypto.dto.ArticlesDto;
 import com.capstone.crypto.dto.CryptoPriceResponseDto;
 import com.capstone.crypto.dto.CryptoResponseDto;
 import com.capstone.crypto.service.CryptoService;
@@ -23,6 +24,17 @@ public class CryptoController {
     {
         System.out.println(cryptoName);
         return cryptoService.getPrices(cryptoName);
+    }
+
+    @GetMapping("/news/{type}")
+    public List<ArticlesDto> getArticles(@PathVariable int type)
+    {
+        return cryptoService.getArticles(type);
+    }
+
+    @GetMapping("/news/{date}/{type}")
+    public List<ArticlesDto> getArticles(@PathVariable int type, @PathVariable String date) {
+        return cryptoService.getArticlesWithDate(type, date);
     }
 
     @GetMapping("/real/{time}/{cryptoName}")

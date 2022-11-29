@@ -14,10 +14,10 @@ public class CryptoPrice {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long priceId;
     @ManyToOne(optional = false) @JoinColumn(name = "cryptoId") private CryptoCurrency cryptoCurrency;
-    @Column(nullable = false) private Long price;
+    @Column(nullable = false) private Float price;
     @Column(nullable = false) private String dateTime;
 
-    public CryptoPrice(Long priceId, CryptoCurrency cryptoCurrency, Long price, String dateTime) {
+    public CryptoPrice(Long priceId, CryptoCurrency cryptoCurrency, Float price, String dateTime) {
         this.priceId = priceId;
         this.cryptoCurrency = cryptoCurrency;
         this.price = price;

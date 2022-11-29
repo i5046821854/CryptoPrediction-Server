@@ -13,10 +13,10 @@ public class CryptoResponseDto {
     private Long priceId;
     private String name;
     private String name_kor;
-    private Long price;
+    private Float price;
     private String dateTime;
 
-    public CryptoResponseDto(Long cryptoId, Long priceId, String name, String name_kor, Long price, String dateTime) {
+    public CryptoResponseDto(Long cryptoId, Long priceId, String name, String name_kor, Float price, String dateTime) {
         this.cryptoId = cryptoId;
         this.priceId = priceId;
         this.name = name;
